@@ -2,6 +2,7 @@ import { Global, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ElasticsearchModule } from '@nestjs/elasticsearch';
 import { SearchService } from './search.service';
+import { SearchController } from './search.controller';
 
 @Global()
 @Module({
@@ -10,10 +11,10 @@ import { SearchService } from './search.service';
     ElasticsearchModule.registerAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
-        node: configService.get('GAPI_ES_URL'),
+        node: configService.get('ELASTICSEARCH_HOST'),
         auth: {
-          username: configService.get('GAPI_ES_USERNAME'),
-          password: configService.get('GAPI_ES_PASSWORD'),
+          username: configService.get('ELASTICSEARCH_USERNAME'),
+          password: configService.get('ELASTICSEARCH_PASSWORD'),
         },
       }),
       inject: [ConfigService],
@@ -21,5 +22,6 @@ import { SearchService } from './search.service';
   ],
   providers: [SearchService],
   exports: [SearchService],
+  controllers: [SearchController],
 })
 export class SearchModule {}
