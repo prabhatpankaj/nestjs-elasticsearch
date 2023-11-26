@@ -7,3 +7,9 @@ export class IndexDto {
     @IsString()
     index: string;
   }
+
+export class IndexIdDto {
+    @ApiProperty({ description: 'Please enter id' })
+    @IsString()
+    id: string;
+  }
