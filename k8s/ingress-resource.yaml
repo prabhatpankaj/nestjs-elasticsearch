@@ -8,9 +8,9 @@ spec:
   ingressClassName: "nginx"
   tls:
   - hosts:
-      - "43.205.253.188"
+      - "nestjses.devpsnex.com"
   rules:
-  - host: "43.205.253.188"
+  - host: "nestjses.devpsnex.com"
     http:
       paths:
       - pathType: Prefix
