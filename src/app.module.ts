@@ -3,10 +3,9 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PrismaModule } from './prisma/prisma.module';
 import { SearchModule } from './search/search.module';
-import { CarModule } from './car/car.module';
 import { CoreModule } from './core/core.module';
+import { BlogModule } from './blog/blog.module';
 
 @Module({
   imports: [
@@ -19,10 +18,9 @@ import { CoreModule } from './core/core.module';
 
       }),
     }),
-    PrismaModule,
     SearchModule,
-    CarModule,
-    CoreModule
+    CoreModule,
+    BlogModule
   ],
   controllers: [AppController],
   providers: [ AppService],

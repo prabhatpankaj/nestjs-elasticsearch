@@ -1,56 +1,6 @@
 version: '3'
  
 services:
-  mysql:
-    image: mysql:8
-    platform: linux/x86_64
-    container_name: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: pass1234
-      MYSQL_DATABASE: db
-      MYSQL_USER: dbuser
-      MYSQL_PASSWORD: pass1234
-    ports:
-      - "3306:3306"
-    volumes:
-      - ./dbdata:/var/lib/mysql
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    platform: linux/x86_64
-    container_name: phpmyadmin
-    links:
-      - mysql
-    environment:
-      PMA_HOST: mysql
-      PMA_PORT: 3306
-      PMA_ARBITRARY: 1
-    restart: always
-    ports:
-      - 8081:80
-  postgres:
-    image: postgres:15
-    platform: linux/x86_64
-    container_name: postgresdb
-    restart: always
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: postgresuser
-      POSTGRES_PASSWORD: postgrespassword
-    volumes:
-      - ./local_pgdata:/var/lib/postgresql/data
-  pgadmin:
-    image: dpage/pgadmin4
-    platform: linux/x86_64
-    container_name: pgadmin4
-    restart: always
-    ports:
-      - "8888:80"
-    environment:
-      PGADMIN_DEFAULT_EMAIL: user-name@domain-name.com
-      PGADMIN_DEFAULT_PASSWORD: pass1234
-    volumes:
-      - ./pgadmin-data:/var/lib/pgadmin
   elasticsearch:
     container_name: elasticsearch
     image: docker.elastic.co/elasticsearch/elasticsearch:8.7.1

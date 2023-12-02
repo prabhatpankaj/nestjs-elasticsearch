@@ -59,9 +59,9 @@ export class SearchService {
     async replaceDocument(indexDto: IndexDto, indexIdDto: IndexIdDto, body: Record<string, any>) {
       return await this.insertDocument(indexDto, body, indexIdDto);
     }
-  
-    searchDocument(indexDto: IndexDto, query: Record<string, any>) {
-      return this.elasticsearchService.search({
+    
+    async searchDocument(indexDto: IndexDto, query: Record<string, any>) {
+      return await this.elasticsearchService.search({
         index: indexDto.index,
         query: query,
       });
